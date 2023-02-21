@@ -2,16 +2,19 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { getCharacters } from "../features/Characters/services/CharacterService";
 import { CharacterI, CharacterResponseI, InfoI } from "../interfaces/CharacterI";
 
+interface ChangePaginationPropsI {
+    page: number;
+}
 export const useCharacterList = () => {
     const [characters, setCharacters] = useState<CharacterI[]>([]);
-    const [info, setInfo] = useState<InfoI>();
-    const [page, setPage] = useState<number>();
+    const [info, setInfo] = useState<InfoI | null>();
+    const [page, setPage] = useState<number>(1);
 
     /**
     * @description Function that loads the API data
     */
     useEffect(() => {
-        changePagination()
+        changePagination({ page })
     }, []);
 
 
@@ -20,11 +23,11 @@ export const useCharacterList = () => {
    * @param event Default event of pagination component
    * @param value The number of page selected
    */
-    const changePagination = (value: number = 1) => {
-        getCharacters(value).then(({ results, info }: CharacterResponseI) => {
+    const changePagination = ({ page }: ChangePaginationPropsI) => {
+        getCharacters(page).then(({ results, info }: CharacterResponseI) => {
             setCharacters(results);
             setInfo(info);
-            setPage(value);
+            setPage(page);
         });
     };
 

@@ -20,7 +20,7 @@ export const Characters = () => {
    * @param {number} selectedPage
    */
   const handleChange = (event: ChangeEvent<unknown>, selectedPage: number) => {
-    changePagination(selectedPage);
+    changePagination({ page: selectedPage });
   };
 
   return (
@@ -30,7 +30,7 @@ export const Characters = () => {
       </Typography>
       <Box
         display={"grid"}
-        gridTemplateColumns={"repeat(auto-fit, minmax(200px, 1fr))"}
+        gridTemplateColumns={"repeat(auto-fit, minmax(250px, 1fr))"}
         gap={"2rem"}
         margin={"0 1rem"}
       >
