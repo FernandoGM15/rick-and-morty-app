@@ -6,31 +6,21 @@ import {
   InfoI,
 } from "../../../interfaces/CharacterI";
 import { CharacterCard } from "./CharacterCard";
-import { getCharacters } from "../services/CharacterService";
+import { useCharacterList } from "../../../hooks/useCharacterList";
 
 export const Characters = () => {
-  const [characters, setCharacters] = useState<CharacterI[]>([]);
-  const [info, setInfo] = useState<InfoI>();
-  const [page, setPage] = useState<number>(1);
+  /**
+   * @description Get the info provided by the custom hook
+   */
+  const { characters, info, page, changePagination } = useCharacterList();
 
   /**
-   * @description Function that loads the API data
+   * @description Executes the function of the custom hook when in the Pagination change event
+   * @param {ChangeEvent<unknown>} event
+   * @param {number} selectedPage
    */
-  useEffect(() => {
-    getCharacters().then((res) => setCharacters(res.results));
-  }, []);
-
-  /**
-   * @description Function that changes the pagination info
-   * @param event Default event of pagination component 
-   * @param value The number of page selected
-   */
-  const handleChange = (event: ChangeEvent<unknown>, value: number) => {
-    getCharacters(value).then(({ results, info }: CharacterResponseI) => {
-      setCharacters(results);
-      setInfo(info);
-      setPage(value);
-    });
+  const handleChange = (event: ChangeEvent<unknown>, selectedPage: number) => {
+    changePagination(selectedPage);
   };
 
   return (
@@ -40,7 +30,7 @@ export const Characters = () => {
       </Typography>
       <Box
         display={"grid"}
-        gridTemplateColumns={"repeat(5, 1fr)"}
+        gridTemplateColumns={"repeat(auto-fit, minmax(200px, 1fr))"}
         gap={"2rem"}
         margin={"0 1rem"}
       >
