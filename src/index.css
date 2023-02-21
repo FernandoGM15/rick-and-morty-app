@@ -1,3 +1,9 @@
-body{
-    background: black;
+@font-face {
+  font-family: get-schwifty;
+  src: url("./assets/fonts/get-schwifty/get_schwifty.ttf");
+}
+
+body {
+  background: black;
+  margin: 0;
 }

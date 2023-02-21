@@ -1,24 +1,26 @@
-import { Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
+// COMPONENTS
+import { NavLogo } from "./components/NavLogo";
+import { NavMenu } from "./components/NavMenu";
 
 export const Navbar = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          ></IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <AppBar position="static" sx={{ backgroundColor: "#272727" }}>
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Box display={"flex"} alignItems="center">
+          <NavLogo width="10rem" />
+        </Box>
+        <Box display={"flex"} gap="2rem">
+          <NavMenu />
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
