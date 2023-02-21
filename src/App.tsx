@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@mui/material";
-import { Navbar } from "./src/components/Navbar/Navbar";
+import { Navbar } from "./src/components/Navbar/components/Navbar";
 import { AppTheme } from "./assets/themes/AppTheme";
 import { Characters } from "./src/features/Characters/components/CharactersList";
 import styled from "@emotion/styled";

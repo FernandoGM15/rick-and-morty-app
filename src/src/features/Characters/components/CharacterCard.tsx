@@ -9,8 +9,10 @@ import { CharacterI } from "../../../interfaces/CharacterI";
 
 export const CharacterCard = ({ name, image }: Partial<CharacterI>) => {
   return (
-    <Card sx={{ backgroundColor: "#272727" }}>
-      <CardActionArea>
+    <CardActionArea>
+      <Card sx={{
+        height: "25rem"
+      }}>
         <CardMedia
           component={"img"}
           width={"100%"}
@@ -18,15 +20,11 @@ export const CharacterCard = ({ name, image }: Partial<CharacterI>) => {
           alt={`${name} Image`}
         />
         <CardContent>
-          <Typography
-            textAlign={"center"}
-            variant="h5"
-            component={"div"}
-          >
+          <Typography textAlign={"center"} variant="h5" component={"div"}>
             {name}
           </Typography>
         </CardContent>
-      </CardActionArea>
-    </Card>
+      </Card>
+    </CardActionArea>
   );
 };

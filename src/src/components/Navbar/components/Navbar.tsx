@@ -1,12 +1,12 @@
 import { Box, Toolbar } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 // COMPONENTS
-import { NavLogo } from "./components/NavLogo";
-import { NavMenu } from "./components/NavMenu";
+import { NavLogo } from "./NavLogo";
+import { NavMenu } from "./NavMenu";
 
 export const Navbar = () => {
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#272727" }}>
+    <AppBar position="static">
       <Toolbar
         sx={{
           display: "flex",
@@ -17,7 +17,7 @@ export const Navbar = () => {
         <Box display={"flex"} alignItems="center">
           <NavLogo width="10rem" />
         </Box>
-        <Box display={"flex"} gap="2rem">
+        <Box>
           <NavMenu />
         </Box>
       </Toolbar>

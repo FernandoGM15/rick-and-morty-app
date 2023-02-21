@@ -10,10 +10,11 @@ export const AppTheme = createTheme({
             fontFamily: "get-schwifty",
             fontWeight: 100,
             textAlign: "center",
-            WebkitTextStroke:"1px yellow"
+            WebkitTextStroke: "1px yellow"
         }
     },
     palette: {
+        mode: "dark",
         text: {
             primary: grey[50]
         },
