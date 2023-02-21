@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material";
 import { Navbar } from "./src/components/Navbar/Navbar";
 import { AppTheme } from "./assets/themes/AppTheme";
-import { Characters } from "./src/features/Characters/Characters";
+import { Characters } from "./src/features/Characters/components/CharactersList";
 import styled from "@emotion/styled";
 
 function App() {

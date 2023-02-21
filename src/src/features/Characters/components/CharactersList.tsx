@@ -1,34 +1,43 @@
-import { Box, Pagination } from "@mui/material";
+import { Box, Pagination, Typography } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
-import { Title } from "../../components/Title/Title";
 import {
   CharacterI,
   CharacterResponseI,
   InfoI,
-} from "../../interfaces/CharacterI";
-import { CharacterCard } from "./components/CharacterCard";
-import { getCharacters } from "./services/CharacterService";
+} from "../../../interfaces/CharacterI";
+import { CharacterCard } from "./CharacterCard";
+import { getCharacters } from "../services/CharacterService";
 
 export const Characters = () => {
   const [characters, setCharacters] = useState<CharacterI[]>([]);
   const [info, setInfo] = useState<InfoI>();
   const [page, setPage] = useState<number>(1);
 
+  /**
+   * @description Function that loads the API data
+   */
   useEffect(() => {
     getCharacters().then((res) => setCharacters(res.results));
   }, []);
 
+  /**
+   * @description Function that changes the pagination info
+   * @param event Default event of pagination component 
+   * @param value The number of page selected
+   */
   const handleChange = (event: ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-    getCharacters(page).then(({ results, info }: CharacterResponseI) => {
+    getCharacters(value).then(({ results, info }: CharacterResponseI) => {
       setCharacters(results);
       setInfo(info);
+      setPage(value);
     });
   };
 
   return (
     <Box>
-      <Title>Characters</Title>
+      <Typography color="primary" variant="h3" sx={{ marginBottom: "2.5rem" }}>
+        Characters
+      </Typography>
       <Box
         display={"grid"}
         gridTemplateColumns={"repeat(5, 1fr)"}
