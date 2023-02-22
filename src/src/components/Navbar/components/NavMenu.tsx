@@ -28,6 +28,7 @@ export const NavMenu = () => {
               color="primary"
               component={Link}
               to={item.path}
+              key={item.id}
             >
               {item.name}
             </Typography>
