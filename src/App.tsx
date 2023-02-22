@@ -1,8 +1,8 @@
 import { ThemeProvider } from "@mui/material";
 import { Navbar } from "./src/components/Navbar/components/Navbar";
 import { AppTheme } from "./assets/themes/AppTheme";
-import { Characters } from "./src/features/Characters/components/CharactersList";
 import styled from "@emotion/styled";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const Header = styled.header({
@@ -20,7 +20,7 @@ function App() {
       </Header>
 
       <Main>
-        <Characters />
+        <Outlet />
       </Main>
     </ThemeProvider>
   );

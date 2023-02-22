@@ -5,14 +5,26 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { CharacterI } from "../../../interfaces/CharacterI";
 
-export const CharacterCard = ({ name, image }: Partial<CharacterI>) => {
+export const CharacterCard = ({ id, name, image }: Partial<CharacterI>) => {
+  const navigate = useNavigate();
+
+  /**
+   * Navigates to character details route
+   */
+  const handleClickOpen = () => {
+    navigate(`/characters/${id}`);
+  };
+
   return (
-    <CardActionArea>
-      <Card sx={{
-        height: "25rem"
-      }}>
+    <CardActionArea onClick={handleClickOpen}>
+      <Card
+        sx={{
+          height: "24rem",
+        }}
+      >
         <CardMedia
           component={"img"}
           width={"100%"}

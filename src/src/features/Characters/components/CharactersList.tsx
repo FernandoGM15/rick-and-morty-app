@@ -1,14 +1,9 @@
 import { Box, Pagination, Typography } from "@mui/material";
-import { ChangeEvent, useEffect, useState } from "react";
-import {
-  CharacterI,
-  CharacterResponseI,
-  InfoI,
-} from "../../../interfaces/CharacterI";
+import { ChangeEvent } from "react";
 import { CharacterCard } from "./CharacterCard";
 import { useCharacterList } from "../../../hooks/useCharacterList";
 
-export const Characters = () => {
+export const CharactersList = () => {
   /**
    * @description Get the info provided by the custom hook
    */
@@ -38,6 +33,7 @@ export const Characters = () => {
           return (
             <CharacterCard
               key={character.id}
+              id={character.id}
               name={character.name}
               image={character.image}
             />

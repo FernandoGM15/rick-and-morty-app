@@ -1,12 +1,13 @@
 import { IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { NavOptionsI, NAV_OPTIONS } from "../helpers/constants";
+import { Link } from "react-router-dom";
 
 export const ResponsiveMenu = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -46,7 +47,13 @@ export const ResponsiveMenu = () => {
         {NAV_OPTIONS.map((item: NavOptionsI) => {
           return (
             <MenuItem onClick={handleCloseNavMenu} key={item.id}>
-              <Typography textAlign="center">{item.name}</Typography>
+              <Typography
+                sx={{ textDecoration: "none" }}
+                to={item.path}
+                component={Link}
+              >
+                {item.name}
+              </Typography>
             </MenuItem>
           );
         })}

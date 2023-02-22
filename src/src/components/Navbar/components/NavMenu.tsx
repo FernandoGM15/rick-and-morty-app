@@ -1,4 +1,5 @@
-import { Box, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import { NavOptionsI, NAV_OPTIONS } from "../helpers/constants";
 import { ResponsiveMenu } from "./ResponsiveMenu";
 
@@ -13,6 +14,7 @@ export const NavMenu = () => {
       >
         <ResponsiveMenu />
       </Box>
+
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
@@ -21,9 +23,14 @@ export const NavMenu = () => {
       >
         {NAV_OPTIONS.map((item: NavOptionsI) => {
           return (
-            <Button color="primary" key={item.id}>
+            <Typography
+              sx={{ textDecoration: "none" }}
+              color="primary"
+              component={Link}
+              to={item.path}
+            >
               {item.name}
-            </Button>
+            </Typography>
           );
         })}
       </Box>
