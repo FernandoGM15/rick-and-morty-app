@@ -1,7 +1,7 @@
 import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { MouseEvent, useState } from 'react';
-import { NavOptionsI, NAV_OPTIONS } from '../helpers/constants';
+import { NavOptionsI, NAV_OPTIONS } from '../../helpers/constants';
 import { Link } from 'react-router-dom';
 
 const ResponsiveMenu = () => {

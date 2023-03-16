@@ -1,8 +1,8 @@
 import { Box, Pagination, Typography } from '@mui/material';
 import { ChangeEvent } from 'react';
-import CharacterCard from './CharacterCard';
-import { useCharacterList } from '../hooks/useCharacterList';
-import LoadingSpinner from '../../../components/LoadingSpinner/components/LoadingSpinner';
+import CharacterCard from './components/CharacterCard/CharacterCard';
+import { useCharacterList } from './hooks/useCharacterList';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 const CharactersList = () => {
   /**

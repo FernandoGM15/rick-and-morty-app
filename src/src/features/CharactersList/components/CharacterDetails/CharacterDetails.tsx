@@ -1,9 +1,9 @@
 import { Box, List, ListItem, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import LoadingSpinner from '../../../components/LoadingSpinner/components/LoadingSpinner';
-import { CharacterI } from '../../../interfaces/CharacterI';
-import { getCharacter } from '../services/CharacterService';
+import LoadingSpinner from '../../../../components/LoadingSpinner/LoadingSpinner';
+import { CharacterI } from '../../../../interfaces/CharacterI';
+import { getCharacter } from '../../services/CharacterService';
 
 const CharacterDetails = () => {
   const [character, setCharacter] = useState<CharacterI>();

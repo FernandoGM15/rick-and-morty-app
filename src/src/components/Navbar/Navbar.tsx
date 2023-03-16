@@ -1,8 +1,8 @@
 import { Box, Toolbar } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 // COMPONENTS
-import NavLogo from './NavLogo';
-import NavMenu from './NavMenu';
+import NavLogo from './components/NavLogo/NavLogo';
+import NavMenu from './components/NavMenu/NavMenu';
 
 const Navbar = () => {
   return (

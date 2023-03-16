@@ -1,5 +1,4 @@
-import { Typography } from '@mui/material';
-import logo from '../../../../assets/images/logo.png';
+import logo from '../../../../../assets/images/logo.png';
 
 interface NavLogoProps {
   width: string;

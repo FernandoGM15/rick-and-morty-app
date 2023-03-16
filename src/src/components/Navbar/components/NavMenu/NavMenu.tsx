@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { NavOptionsI, NAV_OPTIONS } from '../helpers/constants';
-import ResponsiveMenu from './ResponsiveMenu';
+import { NavOptionsI, NAV_OPTIONS } from '../../helpers/constants';
+import ResponsiveMenu from '../ResponsiveMenu/ResponsiveMenu';
 
 const NavMenu = () => {
   return (

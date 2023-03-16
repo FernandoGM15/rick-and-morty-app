@@ -1,6 +1,6 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { CharacterI } from '../../../interfaces/CharacterI';
+import { CharacterI } from '../../../../interfaces/CharacterI';
 
 const CharacterCard = ({ id, name, image }: Partial<CharacterI>) => {
   const navigate = useNavigate();
