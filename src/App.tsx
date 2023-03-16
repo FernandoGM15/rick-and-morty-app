@@ -4,15 +4,15 @@ import { AppTheme } from "./assets/themes/AppTheme";
 import styled from "@emotion/styled";
 import { Outlet } from "react-router-dom";
 
+const Header = styled.header({
+  marginBottom: "2.5rem",
+});
+
+const Main = styled.main({
+  // margin: "2rem",
+});
+
 function App() {
-  const Header = styled.header({
-    marginBottom: "2.5rem",
-  });
-
-  const Main = styled.main({
-    // margin: "2rem",
-  });
-
   return (
     <ThemeProvider theme={AppTheme}>
       <Header>
