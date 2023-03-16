@@ -42,7 +42,8 @@ export const useCharacterList = () => {
     const [characters, setCharacters] = useState<CharacterI[]>([]);
     const [info, setInfo] = useState<InfoI | null>();
     const [page, setPage] = useState<number>(1);
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     /**
     * @description Function that loads the API data
@@ -57,17 +58,22 @@ export const useCharacterList = () => {
    * @param event Default event of pagination component
    * @param value The number of page selected
    */
-    const changePagination = ({ page }: ChangePaginationPropsI) => {
+    const changePagination = async ({ page }: ChangePaginationPropsI) => {
         setLoading(true);
-        getCharacters(page).then(({ results, info }: CharacterResponseI) => {
+        try {
+            const { results, info }: CharacterResponseI = await getCharacters(page);
             setCharacters(results);
             setInfo(info);
             setPage(page);
+        } catch (error) {
+            const result = error as Error;
+            setError(result.message);
+        } finally {
             setLoading(false);
-        });
+        }
     };
 
-    return { characters, info, page, changePagination, loading }
+    return { characters, info, page, changePagination, loading, error }
 
 
 }

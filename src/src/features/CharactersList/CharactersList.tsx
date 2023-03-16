@@ -8,7 +8,7 @@ const CharactersList = () => {
   /**
    * @description Get the info provided by the custom hook
    */
-  const { characters, info, page, changePagination, loading } = useCharacterList();
+  const { characters, info, page, changePagination, loading, error } = useCharacterList();
 
   /**
    * @description Executes the function of the custom hook when in the Pagination change event
@@ -19,6 +19,17 @@ const CharactersList = () => {
     changePagination({ page: selectedPage });
   };
 
+  if (error)
+    return (
+      <Typography
+        variant="h1"
+        color="primary"
+        textAlign="center"
+      >
+        {error}
+      </Typography>
+    );
+  
   return (
     <>
       {loading ? (

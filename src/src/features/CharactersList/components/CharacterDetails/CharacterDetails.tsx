@@ -21,19 +21,38 @@ const CharacterDetails = () => {
     url: ''
   });
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const { id } = useParams();
 
   /**
    * @description Get the character by Id obtained from params
    */
   useEffect(() => {
-    if (!id) return;
-    setLoading(true);
-    getCharacter(id).then((character) => {
-      setCharacter(character);
-      setLoading(false);
-    });
+    (async () => {
+      setLoading(true);
+      if (!id) return;
+      try {
+        const character = await getCharacter(id);
+        setCharacter(character);
+      } catch (error) {
+        const result = error as Error;
+        setError(result.message);
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, []);
+
+  if (error)
+    return (
+      <Typography
+        variant="h1"
+        color="primary"
+        textAlign="center"
+      >
+        {error}
+      </Typography>
+    );
 
   return (
     <>
