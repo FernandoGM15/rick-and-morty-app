@@ -6,7 +6,20 @@ import { CharacterI } from '../../hooks/useCharacterList';
 import { getCharacter } from '../../services/CharacterService';
 
 const CharacterDetails = () => {
-  const [character, setCharacter] = useState<CharacterI>();
+  const [character, setCharacter] = useState<CharacterI>({
+    id: 0,
+    name: '',
+    species: '',
+    gender: '',
+    created: '',
+    episode: [],
+    image: '',
+    location: { link: '', name: '' },
+    origin: { link: '', name: '' },
+    status: '',
+    type: '',
+    url: ''
+  });
   const [loading, setLoading] = useState<boolean>(false);
   const { id } = useParams();
 
@@ -44,8 +57,8 @@ const CharacterDetails = () => {
           >
             <img
               width="100%"
-              src={character?.image}
-              alt={character?.name}
+              src={character.image}
+              alt={character.name}
             />
           </Box>
           <Box
@@ -56,22 +69,22 @@ const CharacterDetails = () => {
           >
             <List>
               <ListItem>
-                <Typography variant="h5">Name: {character?.name}</Typography>
+                <Typography variant="h5">Name: {character.name}</Typography>
               </ListItem>
               <ListItem>
-                <Typography variant="h5">Species: {character?.species}</Typography>
+                <Typography variant="h5">Species: {character.species}</Typography>
               </ListItem>
               <ListItem>
-                <Typography variant="h5">Gender: {character?.gender}</Typography>
+                <Typography variant="h5">Gender: {character.gender}</Typography>
               </ListItem>
               <ListItem>
-                <Typography variant="h5">Status: {character?.status}</Typography>
+                <Typography variant="h5">Status: {character.status}</Typography>
               </ListItem>
               <ListItem>
-                <Typography variant="h5">Location: {character?.location.name}</Typography>
+                <Typography variant="h5">Location: {character.location.name}</Typography>
               </ListItem>
               <ListItem>
-                <Typography variant="h5">Origin: {character?.origin.name}</Typography>
+                <Typography variant="h5">Origin: {character.origin.name}</Typography>
               </ListItem>
             </List>
           </Box>
