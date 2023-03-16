@@ -20,7 +20,7 @@ const CharacterDetails = () => {
     type: '',
     url: ''
   });
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { id } = useParams();
 
@@ -28,9 +28,8 @@ const CharacterDetails = () => {
    * @description Get the character by Id obtained from params
    */
   useEffect(() => {
+    if (!id) return;
     (async () => {
-      setLoading(true);
-      if (!id) return;
       try {
         const character = await getCharacter(id);
         setCharacter(character);
@@ -42,6 +41,8 @@ const CharacterDetails = () => {
       }
     })();
   }, []);
+
+  if (loading) return <LoadingSpinner />;
 
   if (error)
     return (
@@ -56,59 +57,55 @@ const CharacterDetails = () => {
 
   return (
     <>
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
+      <Box
+        sx={{
+          height: '80vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '5rem',
+          margin: '0 3rem'
+        }}
+      >
         <Box
           sx={{
-            height: '80vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '5rem',
-            margin: '0 3rem'
+            width: '40%'
           }}
         >
-          <Box
-            sx={{
-              width: '40%'
-            }}
-          >
-            <img
-              width="100%"
-              src={character.image}
-              alt={character.name}
-            />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column'
-            }}
-          >
-            <List>
-              <ListItem>
-                <Typography variant="h5">Name: {character.name}</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography variant="h5">Species: {character.species}</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography variant="h5">Gender: {character.gender}</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography variant="h5">Status: {character.status}</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography variant="h5">Location: {character.location.name}</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography variant="h5">Origin: {character.origin.name}</Typography>
-              </ListItem>
-            </List>
-          </Box>
+          <img
+            width="100%"
+            src={character.image}
+            alt={character.name}
+          />
         </Box>
-      )}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column'
+          }}
+        >
+          <List>
+            <ListItem>
+              <Typography variant="h5">Name: {character.name}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="h5">Species: {character.species}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="h5">Gender: {character.gender}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="h5">Status: {character.status}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="h5">Location: {character.location.name}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="h5">Origin: {character.origin.name}</Typography>
+            </ListItem>
+          </List>
+        </Box>
+      </Box>
     </>
   );
 };

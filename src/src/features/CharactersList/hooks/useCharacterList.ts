@@ -42,7 +42,7 @@ export const useCharacterList = () => {
     const [characters, setCharacters] = useState<CharacterI[]>([]);
     const [info, setInfo] = useState<InfoI | null>();
     const [page, setPage] = useState<number>(1);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     /**
@@ -59,7 +59,6 @@ export const useCharacterList = () => {
    * @param value The number of page selected
    */
     const changePagination = async ({ page }: ChangePaginationPropsI) => {
-        setLoading(true);
         try {
             const { results, info }: CharacterResponseI = await getCharacters(page);
             setCharacters(results);

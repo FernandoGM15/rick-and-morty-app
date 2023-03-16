@@ -19,6 +19,9 @@ const CharactersList = () => {
     changePagination({ page: selectedPage });
   };
 
+
+  if (loading) return <LoadingSpinner />;
+
   if (error)
     return (
       <Typography
@@ -29,44 +32,40 @@ const CharactersList = () => {
         {error}
       </Typography>
     );
-  
+
   return (
     <>
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <Box>
-          <Typography
-            color="primary"
-            variant="h3"
-            sx={{ marginBottom: '2.5rem' }}
-          >
-            Characters
-          </Typography>
-          <Box
-            display={'grid'}
-            gridTemplateColumns={'repeat(auto-fit, minmax(250px, 1fr))'}
-            gap={'2rem'}
-            margin={'0 1rem'}
-          >
-            {characters.map((character) => {
-              return (
-                <CharacterCard
-                  key={character.id}
-                  id={character.id}
-                  name={character.name}
-                  image={character.image}
-                />
-              );
-            })}
-          </Box>
-          <Pagination
-            count={info?.pages}
-            page={page}
-            onChange={handleChange}
-          />
+      <Box>
+        <Typography
+          color="primary"
+          variant="h3"
+          sx={{ marginBottom: '2.5rem' }}
+        >
+          Characters
+        </Typography>
+        <Box
+          display={'grid'}
+          gridTemplateColumns={'repeat(auto-fit, minmax(250px, 1fr))'}
+          gap={'2rem'}
+          margin={'0 1rem'}
+        >
+          {characters.map((character) => {
+            return (
+              <CharacterCard
+                key={character.id}
+                id={character.id}
+                name={character.name}
+                image={character.image}
+              />
+            );
+          })}
         </Box>
-      )}
+        <Pagination
+          count={info?.pages}
+          page={page}
+          onChange={handleChange}
+        />
+      </Box>
     </>
   );
 };
