@@ -3,6 +3,7 @@ import { ChangeEvent } from 'react';
 import CharacterCard from './components/CharacterCard/CharacterCard';
 import { useCharacterList } from './hooks/useCharacterList';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import ErrorPage from '../../components/ErrorPage/ErrorPage';
 
 const CharactersList = () => {
   /**
@@ -21,16 +22,7 @@ const CharactersList = () => {
 
   if (loading) return <LoadingSpinner />;
 
-  if (error)
-    return (
-      <Typography
-        variant="h1"
-        color="primary"
-        textAlign="center"
-      >
-        {error}
-      </Typography>
-    );
+  if (error) return <ErrorPage error={error} />;
 
   return (
     <>

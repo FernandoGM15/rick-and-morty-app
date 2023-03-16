@@ -1,4 +1,5 @@
 import { Box, List, ListItem, Typography } from '@mui/material';
+import ErrorPage from '../../../../components/ErrorPage/ErrorPage';
 import LoadingSpinner from '../../../../components/LoadingSpinner/LoadingSpinner';
 import useCharacterDetails from './hooks/useCharacterDetails';
 
@@ -7,16 +8,7 @@ const CharacterDetails = () => {
 
   if (loading) return <LoadingSpinner />;
 
-  if (error)
-    return (
-      <Typography
-        variant="h1"
-        color="primary"
-        textAlign="center"
-      >
-        {error}
-      </Typography>
-    );
+  if (error) return <ErrorPage error={error} />;
 
   return (
     <>
