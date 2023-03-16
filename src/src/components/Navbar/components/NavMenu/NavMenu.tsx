@@ -1,7 +1,14 @@
-import { Box, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { NavOptionsI, NAV_OPTIONS } from '../../helpers/constants';
+import { Box } from '@mui/material';
 import ResponsiveMenu from '../ResponsiveMenu/ResponsiveMenu';
+import NavMenuItem, { NavOptionsI } from './components/NavMenuItem/NavMenuItem';
+
+export const NAV_OPTIONS = [
+  {
+    id: '1',
+    name: 'Characters',
+    path: '/characters'
+  }
+];
 
 const NavMenu = () => {
   return (
@@ -21,19 +28,18 @@ const NavMenu = () => {
           gap: '2rem'
         }}
       >
-        {NAV_OPTIONS.map((item: NavOptionsI) => {
-          return (
-            <Typography
-              sx={{ textDecoration: 'none' }}
-              color="primary"
-              component={Link}
-              to={item.path}
-              key={item.id}
-            >
-              {item.name}
-            </Typography>
-          );
-        })}
+        {
+          NAV_OPTIONS.map((item: NavOptionsI) => {
+            return (
+              <NavMenuItem
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                path={item.path}
+              />
+            );
+          })
+        }
       </Box>
     </>
   );
