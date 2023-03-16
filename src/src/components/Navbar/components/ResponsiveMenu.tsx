@@ -1,10 +1,10 @@
-import { IconButton, Menu, MenuItem, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import { MouseEvent, useState } from "react";
-import { NavOptionsI, NAV_OPTIONS } from "../helpers/constants";
-import { Link } from "react-router-dom";
+import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { MouseEvent, useState } from 'react';
+import { NavOptionsI, NAV_OPTIONS } from '../helpers/constants';
+import { Link } from 'react-router-dom';
 
-export const ResponsiveMenu = () => {
+const ResponsiveMenu = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
@@ -30,25 +30,28 @@ export const ResponsiveMenu = () => {
         id="menu-appbar"
         anchorEl={anchorElNav}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left'
         }}
         keepMounted
         transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: 'top',
+          horizontal: 'left'
         }}
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
         sx={{
-          display: { xs: "block", md: "none" },
+          display: { xs: 'block', md: 'none' }
         }}
       >
         {NAV_OPTIONS.map((item: NavOptionsI) => {
           return (
-            <MenuItem onClick={handleCloseNavMenu} key={item.id}>
+            <MenuItem
+              onClick={handleCloseNavMenu}
+              key={item.id}
+            >
               <Typography
-                sx={{ textDecoration: "none" }}
+                sx={{ textDecoration: 'none' }}
                 to={item.path}
                 component={Link}
               >
@@ -61,3 +64,5 @@ export const ResponsiveMenu = () => {
     </>
   );
 };
+
+export default ResponsiveMenu;

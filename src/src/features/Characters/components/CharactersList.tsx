@@ -1,10 +1,10 @@
 import { Box, Pagination, Typography } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
-import { CharacterCard } from './CharacterCard';
+import { ChangeEvent } from 'react';
+import CharacterCard from './CharacterCard';
 import { useCharacterList } from '../hooks/useCharacterList';
-import { LoadingSpinner } from '../../../components/LoadingSpinner/components/LoadingSpinner';
+import LoadingSpinner from '../../../components/LoadingSpinner/components/LoadingSpinner';
 
-export const CharactersList = () => {
+const CharactersList = () => {
   /**
    * @description Get the info provided by the custom hook
    */
@@ -59,3 +59,5 @@ export const CharactersList = () => {
     </>
   );
 };
+
+export default CharactersList;

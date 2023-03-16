@@ -1,11 +1,11 @@
 import { Box, List, ListItem, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { LoadingSpinner } from '../../../components/LoadingSpinner/components/LoadingSpinner';
+import LoadingSpinner from '../../../components/LoadingSpinner/components/LoadingSpinner';
 import { CharacterI } from '../../../interfaces/CharacterI';
 import { getCharacter } from '../services/CharacterService';
 
-export const CharacterDetails = () => {
+const CharacterDetails = () => {
   const [character, setCharacter] = useState<CharacterI>();
   const [loading, setLoading] = useState<boolean>(false);
   const { id } = useParams();
@@ -21,7 +21,7 @@ export const CharacterDetails = () => {
       setLoading(false);
     });
   }, []);
-  
+
   return (
     <>
       {loading ? (
@@ -35,11 +35,13 @@ export const CharacterDetails = () => {
             alignItems: 'center',
             gap: '5rem',
             margin: '0 3rem'
-          }}>
+          }}
+        >
           <Box
             sx={{
               width: '40%'
-            }}>
+            }}
+          >
             <img
               width="100%"
               src={character?.image}
@@ -50,7 +52,8 @@ export const CharacterDetails = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column'
-            }}>
+            }}
+          >
             <List>
               <ListItem>
                 <Typography variant="h5">Name: {character?.name}</Typography>
@@ -77,3 +80,5 @@ export const CharacterDetails = () => {
     </>
   );
 };
+
+export default CharacterDetails;

@@ -1,14 +1,8 @@
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { CharacterI } from "../../../interfaces/CharacterI";
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { CharacterI } from '../../../interfaces/CharacterI';
 
-export const CharacterCard = ({ id, name, image }: Partial<CharacterI>) => {
+const CharacterCard = ({ id, name, image }: Partial<CharacterI>) => {
   const navigate = useNavigate();
 
   /**
@@ -22,17 +16,21 @@ export const CharacterCard = ({ id, name, image }: Partial<CharacterI>) => {
     <CardActionArea onClick={handleClickOpen}>
       <Card
         sx={{
-          height: "24rem",
+          height: '24rem'
         }}
       >
         <CardMedia
-          component={"img"}
-          width={"100%"}
+          component={'img'}
+          width={'100%'}
           image={image}
           alt={`${name} Image`}
         />
         <CardContent>
-          <Typography textAlign={"center"} variant="h5" component={"div"}>
+          <Typography
+            textAlign={'center'}
+            variant="h5"
+            component={'div'}
+          >
             {name}
           </Typography>
         </CardContent>
@@ -40,3 +38,5 @@ export const CharacterCard = ({ id, name, image }: Partial<CharacterI>) => {
     </CardActionArea>
   );
 };
+
+export default CharacterCard;

@@ -1,15 +1,15 @@
-import { Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import { NavOptionsI, NAV_OPTIONS } from "../helpers/constants";
-import { ResponsiveMenu } from "./ResponsiveMenu";
+import { Box, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { NavOptionsI, NAV_OPTIONS } from '../helpers/constants';
+import ResponsiveMenu from './ResponsiveMenu';
 
-export const NavMenu = () => {
+const NavMenu = () => {
   return (
     <>
       <Box
         sx={{
-          display: { xs: "flex", md: "none" },
-          justifyContent: "flex-end",
+          display: { xs: 'flex', md: 'none' },
+          justifyContent: 'flex-end'
         }}
       >
         <ResponsiveMenu />
@@ -17,14 +17,14 @@ export const NavMenu = () => {
 
       <Box
         sx={{
-          display: { xs: "none", md: "flex" },
-          gap: "2rem",
+          display: { xs: 'none', md: 'flex' },
+          gap: '2rem'
         }}
       >
         {NAV_OPTIONS.map((item: NavOptionsI) => {
           return (
             <Typography
-              sx={{ textDecoration: "none" }}
+              sx={{ textDecoration: 'none' }}
               color="primary"
               component={Link}
               to={item.path}
@@ -38,3 +38,5 @@ export const NavMenu = () => {
     </>
   );
 };
+
+export default NavMenu;
