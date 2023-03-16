@@ -1,5 +1,5 @@
 import { ENDPOINT } from "../../../enviroment/Endpoint"
-import { CharacterI, CharacterResponseI } from "../../../interfaces/CharacterI"
+import { CharacterI, CharacterResponseI } from "../hooks/useCharacterList";
 
 export const getCharacters = async (page: number = 1): Promise<CharacterResponseI> => {
     const req = await fetch(`${ENDPOINT}/character?page=${page}`);

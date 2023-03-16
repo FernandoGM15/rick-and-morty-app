@@ -15,7 +15,7 @@ const Navbar = () => {
         }}
       >
         <Box
-          display={'flex'}
+          display='flex'
           alignItems="center"
         >
           <NavLogo width="10rem" />

@@ -2,7 +2,7 @@ import { Box, List, ListItem, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../../../../components/LoadingSpinner/LoadingSpinner';
-import { CharacterI } from '../../../../interfaces/CharacterI';
+import { CharacterI } from '../../hooks/useCharacterList';
 import { getCharacter } from '../../services/CharacterService';
 
 const CharacterDetails = () => {
