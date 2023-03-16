@@ -8,7 +8,7 @@ const CharactersList = () => {
   /**
    * @description Get the info provided by the custom hook
    */
-  const { characters, info, page, changePagination, loading, error } = useCharacterList();
+  const { characters, info, page, changePagination, loading, error, navigate } = useCharacterList();
 
   /**
    * @description Executes the function of the custom hook when in the Pagination change event
@@ -18,7 +18,6 @@ const CharactersList = () => {
   const handleChange = (event: ChangeEvent<unknown>, selectedPage: number) => {
     changePagination({ page: selectedPage });
   };
-
 
   if (loading) return <LoadingSpinner />;
 
@@ -53,9 +52,9 @@ const CharactersList = () => {
             return (
               <CharacterCard
                 key={character.id}
-                id={character.id}
                 name={character.name}
                 image={character.image}
+                handleShowDetails={() => navigate(`/characters/${character.id}`)}
               />
             );
           })}

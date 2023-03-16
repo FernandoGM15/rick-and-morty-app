@@ -1,19 +1,9 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import { CharacterI } from '../../hooks/useCharacterList';
 
-const CharacterCard = ({ id, name, image }: Partial<CharacterI>) => {
-  const navigate = useNavigate();
-
-  /**
-   * Navigates to character details route
-   */
-  const handleClickOpen = () => {
-    navigate(`/characters/${id}`);
-  };
-
+const CharacterCard = ({ name, image, handleShowDetails }: Partial<CharacterI>) => {
   return (
-    <CardActionArea onClick={handleClickOpen}>
+    <CardActionArea onClick={handleShowDetails}>
       <Card
         sx={{
           height: '24rem'

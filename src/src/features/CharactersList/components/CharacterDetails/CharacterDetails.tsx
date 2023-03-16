@@ -2,9 +2,9 @@ import { Box, List, ListItem, Typography } from '@mui/material';
 import LoadingSpinner from '../../../../components/LoadingSpinner/LoadingSpinner';
 import useCharacterDetails from './hooks/useCharacterDetails';
 
-const { loading, error, character } = useCharacterDetails();
-
 const CharacterDetails = () => {
+  const { loading, error, character } = useCharacterDetails();
+
   if (loading) return <LoadingSpinner />;
 
   if (error)

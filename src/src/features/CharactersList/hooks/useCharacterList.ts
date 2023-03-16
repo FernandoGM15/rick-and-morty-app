@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getCharacters } from "../services/CharacterService";
 
 export interface CharacterI {
@@ -20,6 +21,7 @@ export interface CharacterI {
     episode: string[];
     url: string;
     created: string;
+    handleShowDetails: () => void;
 }
 
 export interface InfoI {
@@ -39,6 +41,8 @@ interface ChangePaginationPropsI {
 }
 
 export const useCharacterList = () => {
+
+    const navigate = useNavigate();
     const [characters, setCharacters] = useState<CharacterI[]>([]);
     const [info, setInfo] = useState<InfoI | null>();
     const [page, setPage] = useState<number>(1);
@@ -72,7 +76,7 @@ export const useCharacterList = () => {
         }
     };
 
-    return { characters, info, page, changePagination, loading, error }
+    return { characters, info, page, changePagination, loading, error, navigate }
 
 
 }
