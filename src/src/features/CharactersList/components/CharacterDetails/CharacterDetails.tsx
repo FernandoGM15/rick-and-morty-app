@@ -1,4 +1,4 @@
-import { Box, List, ListItem, Typography } from '@mui/material';
+import { Grid, List, ListItem, Typography } from '@mui/material';
 import ErrorPage from '../../../../components/ErrorPage/ErrorPage';
 import LoadingSpinner from '../../../../components/LoadingSpinner/LoadingSpinner';
 import useCharacterDetails from './hooks/useCharacterDetails';
@@ -12,55 +12,57 @@ const CharacterDetails = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          height: '80vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '5rem',
-          margin: '0 3rem'
-        }}
+      <Grid
+        container
+        height="80vh"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        gap="5rem"
       >
-        <Box
-          sx={{
-            width: '40%'
-          }}
+        <Grid
+          item
+          xs={12}
+          md={4}
         >
           <img
+            style={{
+              borderRadius: '10px'
+            }}
             width="100%"
             src={character.image}
             alt={character.name}
           />
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column'
-          }}
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={4}
+          display="flex"
+          flexDirection="column"
         >
           <List>
             <ListItem>
-              <Typography variant="h5">Name: {character.name}</Typography>
+              <Typography variant="h5"><b>Name:</b> {character.name}</Typography>
             </ListItem>
             <ListItem>
-              <Typography variant="h5">Species: {character.species}</Typography>
+              <Typography variant="h5"><b>Species:</b> {character.species}</Typography>
             </ListItem>
             <ListItem>
-              <Typography variant="h5">Gender: {character.gender}</Typography>
+              <Typography variant="h5"><b>Gender:</b> {character.gender}</Typography>
             </ListItem>
             <ListItem>
-              <Typography variant="h5">Status: {character.status}</Typography>
+              <Typography variant="h5"><b>Status:</b> {character.status}</Typography>
             </ListItem>
             <ListItem>
-              <Typography variant="h5">Location: {character.location.name}</Typography>
+              <Typography variant="h5"><b>Location:</b> {character.location.name}</Typography>
             </ListItem>
             <ListItem>
-              <Typography variant="h5">Origin: {character.origin.name}</Typography>
+              <Typography variant="h5"><b>Origin:</b> {character.origin.name}</Typography>
             </ListItem>
           </List>
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
     </>
   );
 };
