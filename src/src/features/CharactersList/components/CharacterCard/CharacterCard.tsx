@@ -4,18 +4,21 @@ import { CharacterI } from '../../hooks/useCharacterList';
 const CharacterCard = ({ name, image, handleShowDetails }: Partial<CharacterI>) => {
   return (
     <CardActionArea onClick={handleShowDetails}>
-      <Card
-        sx={{
-          height: '24rem'
-        }}
-      >
+      <Card>
         <CardMedia
           component={'img'}
           width={'100%'}
           image={image}
           alt={`${name} Image`}
         />
-        <CardContent>
+        <CardContent
+          sx={{
+            height: '4rem',
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center"
+          }}
+        >
           <Typography
             textAlign={'center'}
             variant="h5"
